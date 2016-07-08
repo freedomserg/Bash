@@ -1,0 +1,127 @@
+pwd   		print working directory
+hostname 	my computer's network name
+mkdir		make directory
+	mkdir -p		create intermediate directories as required
+cd			change directory
+	cd			Returns you to your login directory
+	cd ~		Returns you to your login directory
+	cd /		Takes you to the system's root directory
+	cd /home	Takes you to the home directory, where user login directories are stored
+	
+ls			list directory
+	ls -lr		List the files in the working directory in long format
+	ls -la		List all files in the parent of the working directory in long format
+	ls -i		displays inod of file or directory
+ln			create hard link
+ln -s 		create symbol link
+rmdir		remove directory
+	rm -rf		Remove non-empty directory
+pushd		push directory
+popd		pop directory
+touch		create a new file
+cp			copy a file or a directory
+	cp -r		copy directory with its content
+mv			move (rename) file or directory
+	mv -v	move (rename) and then displays a report about executed operations
+less		page through a file
+cat			print the whole file
+	cat > fileName	writes to a file anything you type; then press Ctrl + d to close a file
+	cat >> fileName	appends to a file anything you type; then press Ctrl + d to close a file 	
+xargs		execute arguments
+find 		find files
+	find STARTDIR -name WILDCARD -print
+	find . -name "*.txt" -print 	finds files ending in .txt and displays results of a search
+	find . -name "*.txt" -print | less		takes the result of finding and "pipes" it to <less> command	
+grep		find things inside files
+	grep -i	ignore case
+	grep <text> WILDCARD
+	grep new "*.txt"
+man			read a manual page
+apropos		find what man page is appropriate
+env			look at your environment
+echo		print some arguments
+export		export/set a new enviroment variable
+exit		exit the shell
+sudo		become super user root
+chmod		change permission modifiers
+			chmod 777 bacon (set full rights for user, group and others; 1 - execute, 2 - write, 4 - read)
+			u - user
+			g - group
+			o - others
+			chmod o+w bacon.txt (add write privilege to others)
+			chmod o-w bacon.txt (remove write privilege from others)
+chown		change ownership
+|			takes the output from the command on the left, and "pipes" it to the command on the right
+<			takes and sends the input from the file on the right to the program on the left
+>			takes the output of the command on the left, then writes it to the file on the right
+>>			takes the output of the command on the left, then appends it to the file on the right
+*			matches anything in a wildcard like *.txt
+?			replaces any single character
+Шаблон '[]' совпадает с одним символом из тех что указаны в скобках. Также в скобках можно указать диапазон символов 
+(для этого используется символ –/дефис) или несколько диапазонов подряд, тогда шаблон будет совпадать с одним любым 
+символом из этого диапазона
+
+zip	 <ArchiveFileName>.zip <file1 to archive> <file2 to archive>	compress several files to archive
+unzip <fileName>	extract zip archive
+gzip <filename>		compress file to .gz format
+					gzip Grocery\ List (\ экранирует пробел в имени файла)
+gunzip <filename>	extract .gz file
+tar -cvf <ArchiveFileName>.tar <file1 to archive> <file2 to archive>		pack several files to archive without compressing
+(after: gzip <ArchiveFileName>.tar	compress package)
+tar -czvf <ArchiveFileName>.tar.gz <file1 to archive> <file2 to archive>		pack several files to .tar.gz archive with compressing
+tar -xvf 	<ArchiveFileName>.tar 												unpack .tar archive without using gunzip
+tar -xzvf	<ArchiveFileName>.tar.gz											unpack .tar.gz archive with using gunzip
+
+bzip2 <fileName>		archive file with compressing
+bunzip2 <fileName>.bz2	extract .bz2 file
+tar -cjvf <ArchiveFileName>.tar.bz2 <file1 to archive> <file2 to archive>		pack several files to .tar.bz2 archive with compressing
+tar -xjvf	<ArchiveFileName>.tar.bz2											unpack .tar.bz2 archive
+ 
+sh             execute *.sh  
+./             execute *.sh
+bash			execute *.sh
+/absolute/path/program_name		execute *.sh  
+
+shalsum <filename>	calculates file checksum (hashcode)
+shalsum <filename> | grep <checksum from web-site> (compares calculated checksum with given checksum from web-site)
+
+sudo useradd <username>				add new user
+sudo passwd <username>				add password for user
+sudo groupadd <groupname>			add new group
+sudo usermod -a -G <group> <user> 	add user to group
+sudo userdel <user>					delete user
+
+ssh root@45.55.248.198  		connect to server by SSH
+								root - username
+								45.55.248.198 - IP
+ssh-keygen -t rsa				generate private/public key pair
+ssh-copy-id root@45.55.248.198	add generated id to server
+
+ps						displays a list of processes running on a computer in a background by one user
+ps ax					displays all processes including system processes 
+Ctrl+C					kill program from command line
+[program_name] & 		run program in a background
+jobs					displays all jobs(category of processes) running
+fg	%[id of job]		return job from background to manual (in terminal); then hit Ctrl+C to terminate it
+Ctrl+Z					freeze running program
+	fg					resume program (foreground)
+	bg					resume program in background mode
+
+To kill backround process:
+	ps						display all processes
+	kill [process id]		kill process
+kill -STOP [process id] 	freeze process
+kill -CONT [process id]		unfreeze process
+
+nano <file_name>		enables to edit file (Ctrl + X - exit)
+
+wget <link>						download file from Internet
+wget -P path/to/dir <link>  	download file and put it to directory
+wget -O path/to/file <link> 	download file and save it with such name
+wget -c ссылка 					докачать файл по ссылке в случае обрыва связи
+wget --spider ссылка			проверить доступность файла по ссылке
+wget -i текстовый_файл			скачать несколько файлов по ссылкам из текстового файла
+wget -r -l глубина ссылка 		рекурсивное скачивание файлов по ссылке на указанную глубину (по умолчанию глубина 5)
+wget -r -A <тип, тип ...> ссылка 	рекурсивное скачивание файлов только определенного типа(типов)
+
+
