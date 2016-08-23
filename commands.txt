@@ -36,6 +36,8 @@ grep		find things inside files
 	grep -i	ignore case
 	grep <text> WILDCARD
 	grep new "*.txt"
+	grep -c "123" file.txt		display how many times "123" occurs in file.txt
+	grep -r "123" ~/		find "123" in all files of home dir
 man			read a manual page
 apropos		find what man page is appropriate
 env			look at your environment
@@ -91,11 +93,14 @@ sudo groupadd <groupname>			add new group
 sudo usermod -a -G <group> <user> 	add user to group
 sudo userdel <user>					delete user
 
+ssh <login>@<server's address> -p <port>
 ssh root@45.55.248.198  		connect to server by SSH
 								root - username
 								45.55.248.198 - IP
 ssh-keygen -t rsa				generate private/public key pair
 ssh-copy-id root@45.55.248.198	add generated id to server
+scp -P <port> <login>@<server's address>:<path in server> <path in client>		copy files from server to client
+scp -P <port> <path in client> <login>@<server's address>:<path in server> 		copy files from client to server
 
 ps						displays a list of processes running on a computer in a background by one user
 ps ax					displays all processes including system processes 
@@ -123,5 +128,15 @@ wget --spider ссылка			проверить доступность файл�
 wget -i текстовый_файл			скачать несколько файлов по ссылкам из текстового файла
 wget -r -l глубина ссылка 		рекурсивное скачивание файлов по ссылке на указанную глубину (по умолчанию глубина 5)
 wget -r -A <тип, тип ...> ссылка 	рекурсивное скачивание файлов только определенного типа(типов)
+
+find <folder> -name <filename>		find file in specific folder
+find ~/ -name "*.txt"			find all text files in home dir
+find -name "*.txt"			find all text files in current dir
+
+sudo apt-get install <program>		install program through terminal
+sudo apt-get remove <program>		remove program through terminal
+sudo apt-get upgrade			update installed packages
+sudo apt-get update			update references for packages
+sudo apt-get install --only-upgrade <program>			update specific program
 
 
